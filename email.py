@@ -50,17 +50,17 @@ async def run(_, msg):
     await msg.reply("Emails sent successfully!")
 
 @neimanxe.on_message(filters.command("mystatus"))
-async def mystatus(client, message):
-    sent_emails_data = sent_emails_collection.find({"user_id": (link unavailable)})
+async def mystatus(_, msg):
+    sent_emails_data = sent_emails_database.find({"user_id": (link unavailable)})
     sent_emails_message = "You have sent emails to:\n"
     for data in sent_emails_data:
         sent_emails_message += f"{data['recipient_email']}: {data['num_emails']} emails\n"
-    await message.reply(sent_emails_message)
+    await msg.reply(sent_emails_message)
 
-@app.on_message(filters.command("logout"))
-async def logout(client, message):
-    collection.delete_one({"user_id": (link unavailable)})
-    sent_emails_collection.delete_many({"user_id": (link unavailable)})
-    await message.reply("Email login data cleared successfully!")
+@neimanxe.on_message(filters.command("logout"))
+async def logout(_, msg):
+    database.delete_one({"user_id": (link unavailable)})
+    sent_emails_database.delete_many({"user_id": (link unavailable)})
+    await msg.reply("Email login data cleared successfully!")
 
-app.run()
+neimanxe.run()
