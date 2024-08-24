@@ -1,13 +1,19 @@
 from pyrogram import Client, filters
 from pymongo import MongoClient
 import yagmail
+from config import API_ID, API_HASH, BOT_TOKEN, OWNER_ID, MONGO_URI
 
-mongo_client = MongoClient("")
+mongo_client = MongoClient("MONGO_URI")
 db = mongo_client["email_bot"]
 database = db["users"]
 sent_emails_database = db["sent_emails"]
 
-app = Client("email_bot")
+neimanxe = Client(
+    "Emailboomberbot",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=bot_token,
+)
 
 @neimanxe.on_message(filters.command("logging"))
 async def logging(_, msg):
