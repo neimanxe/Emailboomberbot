@@ -1,2 +1,4 @@
+yagmail
+pymongo
 pyrogram
 tgcrypto
